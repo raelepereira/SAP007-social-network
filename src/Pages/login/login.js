@@ -1,3 +1,4 @@
+import{existingUser} from '../../configs/authentication.js'
 export default () => {
   const container = document.createElement("div");
   container.classList.add("content-login")
@@ -33,6 +34,7 @@ export default () => {
   
   buttonLogin.addEventListener('click', (event)=> {
     event.preventDefault();
+    existingUser(buttonEmail.value, buttonPassword.value)
   })
   
   
