@@ -11,11 +11,11 @@ const auth = getAuth();
 É necessário criar uma função que será exportada para main.js que receberá o email e senha de lá
 createUserWithEmailAndPassword será o retorno.*/
 export const newUser = (email, password) => {
-  const msgError = document.querySelector('#message-error')
-  const msgUserConcluded = document.querySelector('#message-concluded')
-  if (!email) {
-    msgError.innerHTML = 'Insira um email'
-  }
+  //const msgError = document.querySelector('#message-error')
+  //const msgUserConcluded = document.querySelector('#message-concluded')
+  //if (!email) {
+    //msgError.innerHTML = 'Insira um email'
+  //}
   console.log(email)
   console.log(password)
   createUserWithEmailAndPassword(auth, email, password)

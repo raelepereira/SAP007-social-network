@@ -13,7 +13,7 @@ export default () => {
       <input type="text" id="input-name" class="input-email" placeholder="Nome de usuário">
       <input type="date" id="birth-date" class="input-email">
       <input type="password" id="input-password" class="input-email" placeholder="Senha">
-      <span id="message-error" class="message-error"></span>
+      <span id="message" class="message"></span>
       <button type="button" id="button-register" class="button-login">Cadastre-se</button>
     </form>
   
@@ -28,8 +28,8 @@ export default () => {
 container.innerHTML = templateNewUser; 
 
 const NewUserEmail = container.querySelector('#input-email')
-const NewUserName = container.querySelector('#input-name')
-const NewUserDate = container.querySelector('#birth-date')
+//const NewUserName = container.querySelector('#input-name')
+//const NewUserDate = container.querySelector('#birth-date')
 const NewUserPassword = container.querySelector('#input-password')
 const ButtonRegister = container.querySelector('#button-register')
 
@@ -37,8 +37,23 @@ console.log(NewUserEmail.value);
 
 ButtonRegister.addEventListener('click', (e) => {
 e.preventDefault();
-newUser(NewUserEmail.value, NewUserPassword.value)
+let alertmessage = document.querySelector('#message');
+switch (newUser){
+  case !NewUserEmail.value:
+    alertmessage.innerHTML = 'Insira um e-mail'
+    break;
+    case !NewUserPassword.value:
+      alertmessage.innerHTML = 'Crie uma senha'
+      break;
+      case NewUserEmail.value, NewUserPassword.value:
+        alertmessage.innerHTML = 'Cadastro concluído'
+        break;
+}
+//newUser(NewUserEmail.value, NewUserPassword.value);
 
+//console.log(NewUserEmail.value)
+//console.log(NewUserPassword.value)
+;
 })
 
 return container;
