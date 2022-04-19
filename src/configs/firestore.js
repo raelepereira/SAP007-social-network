@@ -5,7 +5,9 @@ import {
   orderBy,
   deleteDoc,
   getDocs,
-  updateDoc
+  updateDoc,
+  query,
+  where,
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 
 import { auth } from "./authentication.js";
@@ -21,8 +23,8 @@ o Cloud Firestore já cria coleções e documentos de modo implícito na primeir
 //catch define um bloco de código para lidar com qualquer erro.
 
 //cria uma nova coleção - cada post é um documento
-export async function newPost(message, displayName){
-  displayName = auth.currentUser.displayName;
+export async function newPost(message){
+ const displayName = auth.currentUser.displayName;
   try {
     const post = {
       message: message,
@@ -73,11 +75,18 @@ export const allPosts = async () => {
   let arrayOfPosts = [];
   querySnapshot.forEach((doc) => {
     const posts = doc.data();
-    const postId = doc.id;
-    posts['id'] = postId;
+    //const postId = doc.id;
+    //posts['id'] = postId;
     arrayOfPosts.push(posts);
   });
   return arrayOfPosts
+}
+
+export const getUserPosts = async (id) => {
+  const displayName = auth.currentUser.displayName;
+  const clause = where("displayName", "==", displayName)
+  const querySnapshot = await query(collection(db, "posts"),clause);
+  return querySnapshot
 }
 
 //Editar post

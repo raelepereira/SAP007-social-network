@@ -4,30 +4,16 @@ import {
   //sortPosts
 } from "../../configs/firestore.js";
 import {
-  logout,
-  auth,
+  auth
 } from "../../configs/authentication.js";
+
+import header from "../components/header.js";
 
 export default () => {
   const container = document.createElement("div");
   container.classList.add("content-feed")
     
   const templateFeed = `
-    <header class="header">
-      <img class="header-image" src="./img/logo3.png" alt="logo">
-      <nav class="header-menu" id="nav">
-        <button id="btn-mobile" class="btn-mobile" aria-label="Open menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">Menu
-          <span id="hamburger"></span>
-        </button>
-
-        <ul id="menu" class="menu" role="menu"> 
-          <li><a class="header-menu-item" href="#about">Sobre nós</a></li>
-          <li><a class="header-menu-item" href="#perfil">Meu Perfil</a></li>
-          <li><a class="header-menu-item link-login" href="#login" id="btn-exit">Sair</a></li>
-        </ul>  
-      </nav>
-    </header>
-    
     <main class="main">
         <form class="write-post main-form" id="write-post">
           <input class="header-menu-item input-search" type="search" id="input-search" placeholder="Pesquisar poemas...">
@@ -44,7 +30,7 @@ export default () => {
         </section>
     </main> 
     `;
-
+  container.appendChild(header())
   container.innerHTML = templateFeed;
 
   //template do card do post
@@ -100,7 +86,7 @@ export default () => {
       msgAlert.innerHTML = "Escreva uma poesia"
     } 
     else {
-      newPost(addNewPost.value, auth.currentUser.displayName)
+      newPost(addNewPost.value)
       .then(function () {
         let date = new Date()
         showNewPost.appendChild(createCardPost(addNewPost.value,auth.currentUser.displayName, formatDateStyle(date)));
