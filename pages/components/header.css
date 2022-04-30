@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Sarala:wght@400;700&display=swap');
+
+.header {
+  height: 5rem;
+  display: flex;
+  flex-direction: column; 
+  flex-wrap: wrap;
+  border-bottom: 0.3px solid #000000;
+}
+
+.header-image{
+  height: 5rem;
+  width: 10rem;
+  margin-top: 0;
+}
+
+.header-menu{
+  display: flex;
+  justify-content: flex-end;  
+  
+}
+
+.menu {
+  margin: 1.5rem 1rem 0 0;
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}  
+
+.menu a:hover {
+  background-color: rgba(122,	9,	140, 0.5);
+  border-radius: 5px;
+}
+
+.header-menu-item {
+  font-family: 'Sarala', sans-serif;
+  color: #020202;
+  font-style: bold;
+  font-size: 1.5rem;
+}
+
+.btn-mobile {
+  display: none;
+}
+
+@media screen and (min-width: 300px) and (max-width: 667px) {
+  .header {
+    background-color: rgba(122,	9,	140, 0.5);
+  }
+  
+  .menu {
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 57px;
+    right: 0px;
+    background: rgba(231, 207, 177);
+    height: 0;
+    transition: .6s;
+    z-index: 1000;
+    visibility: hidden;
+    overflow-y: hidden;
+  }
+  
+  #nav.active .menu {
+    height: calc(100vh - 55px);
+    visibility: visible;
+    width: 100%;
+  }
+
+  .menu a {
+    display: flex;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+   
+  }
+
+  .btn-mobile {
+    margin-top: 25px;
+    display: flex;
+    padding: .5rem 1rem; 
+    font-size: 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    gap: .5rem;
+  }
+  
+  #hamburger {
+    display: block;
+    border-top: 2px solid black;
+    width: 20px;
+  }
+  
+  #hamburger::after, 
+  #hamburger::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    margin-top: 5px;
+    transition: .3s;
+    position: relative;
+  }
+  
+  #nav.active #hamburger {
+    border-top-color: transparent;
+  }
+  
+  #nav.active #hamburger::before {
+    transform: rotate(135deg);
+  }
+  
+  #nav.active #hamburger::after {
+    transform: rotate(-135deg);
+    top: -7px;
+  }
+
+  .header-image {
+    width: 10rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {  
+  .header-menu-item {
+    font-size: 1.5rem;
+    }
+}  
+
