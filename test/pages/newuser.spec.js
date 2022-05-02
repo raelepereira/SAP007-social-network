@@ -26,4 +26,3 @@ describe('registerUser', () => {
     expect(functionsFirebase.createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
   });
 });
-
