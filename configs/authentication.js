@@ -23,11 +23,7 @@ export function registerUser(displayName, email, password) {
 }
 
 export function userWithLogin(email, password) {
-  return signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      return user;
-    });
+  return signInWithEmailAndPassword(auth, email, password);
 }
 
 export function isLoggedIn(callback) {
@@ -37,12 +33,9 @@ export function isLoggedIn(callback) {
 }
 
 export function logout() {
-  return signOut(auth)
-    .then(() => 'logout')
-    .catch((error) => error);
+  return signOut(auth);
 }
 
 export function forgotPassword(email) {
-  return sendPasswordResetEmail(auth, email)
-    .then(() => email);
+  return sendPasswordResetEmail(auth, email);
 }
