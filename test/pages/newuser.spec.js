@@ -10,6 +10,7 @@ jest.mock('../../src/lib/exports-firebase.js');
 
 describe('registerUser', () => {
   it('should register correctly', async () => {
+      registerUser.mockResolvedValueOnce();
       const page = newuser();
       const newUserName = page.querySelector('#input-name');
       const newUserEmail = page.querySelector('#input-email');

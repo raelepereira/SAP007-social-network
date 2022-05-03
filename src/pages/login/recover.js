@@ -1,6 +1,6 @@
 import { forgotPassword } from '../../configs/authentication.js';
 
-export default () => {
+export default function recover() {
   const container = document.createElement('div');
   container.classList.add('content-login');
 
@@ -53,4 +53,4 @@ export default () => {
   });
 
   return container;
-};
+}

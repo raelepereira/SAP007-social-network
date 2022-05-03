@@ -9,6 +9,7 @@ import { userWithLogin } from '../../src/configs/authentication.js';
 jest.mock('../../src/lib/exports-firebase.js');
 
 it ('login should signIn with success', async () => {
+  await userWithLogin.mockResolvedValueOnce();
   const page = login();
   const buttonEmail = page.querySelector('#input-email');
   const buttonPassword = page.querySelector('#input-password');
@@ -18,9 +19,9 @@ it ('login should signIn with success', async () => {
 
   buttonLogin.dispatchEvent(new Event('click'));
   
-  await userWithLogin('teste@teste.com', '123456')
-  expect(functionsFirebase.signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
-  expect(functionsFirebase.signInWithEmailAndPassword).toHaveBeenCalledWith(functionsFirebase.getAuth, 'teste@teste.com', '123456');
+  expect(userWithLogin).toHaveBeenCalledTimes(1);
+  expect(userWithLogin).toHaveBeenCalledWith('teste@teste.com', '123456');
+  //expect(functionsFirebase.signInWithEmailAndPassword).toHaveBeenCalledWith('teste@teste.com', '123456');
 });
 
 describe("page login", () => {
