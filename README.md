@@ -5,7 +5,7 @@
 
 **Status do Projeto:** _Finalizado_
   
-**Deploy:** 
+**Deploy:** (https://beascarvalho.github.io/SAP007-social-network/)
 </div>
 
 ---
