@@ -3,7 +3,7 @@
 
 ## Eu, Poesia é uma rede social para postar poesias.
 
-**Status do Projeto:** _Em Andamento_
+**Status do Projeto:** _Finalizado_
   
 **Deploy:** 
 </div>
